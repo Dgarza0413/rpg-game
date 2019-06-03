@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>RPG game</title>
+</head>
+
+<style>
+    h1 {
+        text-align: center;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    button {
+        text-align: center;
+        width: 100%;
+    }
+
+    .character-box {
+        display: flex;
+        justify-content: center;
+    }
+
+    .character-detail {
+        margin: 30px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <header>
+        <h1>EarthBound</h1>
+    </header>
+    <div class="container">
+        <h3>Choose your character</h3>
+        <div id="character-list">
+            <div class="character-box"></div>
+        </div>
+        <br>
+        <div id="character-selected"></div>
+        <br>
+        <button id="ready">Ready?</button>
+        <button id="attack">attack</button>
+
+        <div id="attacker-display"></div>
+
+        <br>
+        <div id="enemy-list"></div>
+    </div>
+
+</body>
+<script>
+    //I have to generate a characters list should i go the object route?
+    var character
+    var health
+    var attackDescription
+    var attackPwr
+
+    var mainCharacterList = [{
+        character: "ness",
+        health: 200,
+        attackDescription: "Balanced",
+        attackPwr: (Math.floor(Math.random() * 8) + 5)
+    },
+    {
+        character: "po",
+        health: 170,
+        attackDescription: "Strong",
+        attackPwr: (Math.floor(Math.random() * 10) + 6)
+    },
+    {
+        character: "jeff",
+        health: 130,
+        attackDescription: "Balanced",
+        attackPwr: (Math.floor(Math.random() * 7) + 5)
+    },
+    {
+        character: "paula",
+        health: 160,
+        attackDescription: "weak",
+        attackPwr: (Math.floor(Math.random() * 6) + 2)
+    }
+    ]
+
+    var enemyList = [{
+        enemy: "Old party Man",
+        health: 100,
+        attackPwr: (Math.floor(Math.random() * 4))
+    }]
+
+    printCharacters();
+
+    //a for loop to generate each of the characters
+    function printCharacters() {
+        for (var i = 0; i < mainCharacterList.length; i++) {
+            var characterBox = $("<div>")
+            var characters = $("<div>");
+            var health = $("<span>");
+            var attackPwr = $("<div>");
+
+            characterBox.addClass("character-detail")
+            $(".character-box").append(characterBox)
+
+            //print characters
+            characters.addClass("name")
+            characters.attr("name", mainCharacterList[i].character)
+            characters.text("character: " + mainCharacterList[i].character)
+            characterBox.append(characters)
+
+            //print health
+            health.addClass("health")
+            health.text("health: " + mainCharacterList[i].health)
+            characterBox.append(health)
+
+            //print attackPwr
+            attackPwr.text("attack Power: " + mainCharacterList[i].attackPwr)
+            characterBox.append(attackPwr)
+        }
+    }
+
+    //a click function to select character to 
+    $(".character-detail").on("click", function () {
+        console.log("you have selected " + character)
+        $("#character-selected").text("a button was pressed")
+        //use keyword this to find the name of the clicked character detail
+    })
+
+
+</script>
+
+</html>
