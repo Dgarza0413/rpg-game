@@ -92,7 +92,14 @@
     var enemyList = [{
         enemy: "Old party Man",
         health: 100,
+        attackDescription: "He looks weak, and lame",
         attackPwr: (Math.floor(Math.random() * 4))
+    },
+    {
+        enemy: "starman",
+        health: 250,
+        attackDescription: "A strong alien",
+        attackPwr: (Math.floor(Math.random() * 12) + 6)
     }]
 
     printCharacters();
@@ -100,10 +107,13 @@
     //a for loop to generate each of the characters
     function printCharacters() {
         for (var i = 0; i < mainCharacterList.length; i++) {
+            // main character variables
             var characterBox = $("<div>")
             var characters = $("<div>");
             var health = $("<span>");
             var attackPwr = $("<div>");
+
+            //enemy variables
 
             characterBox.addClass("character-detail")
             $(".character-box").append(characterBox)
@@ -127,9 +137,24 @@
 
     //a click function to select character to 
     $(".character-detail").on("click", function () {
-        console.log("you have selected " + character)
+        //set variables for character being selected
+        var characterSelect = false
+
+        // console.log("you have selected " + ma÷inCharacterList)
+        console.log("you have selected " + mainCharacterList[0].character)
+
+
         $("#character-selected").text("a button was pressed")
         //use keyword this to find the name of the clicked character detail
+
+        //keyword this to transfer the information to 
+
+        // an if function can be used to determine if character has been selected
+        // use the ready button to 
+    })
+
+    $("#ready").on("click", function () {
+        console.log("the ready button has been clicked")
     })
 
 
